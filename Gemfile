@@ -15,6 +15,7 @@ group :development, :test do
   gem 'byebug'
   gem 'rubocop'
   gem 'brakeman', require: false
+  gem 'factory_girl_rails'
 end
 
 group :development do
