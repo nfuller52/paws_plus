@@ -21,4 +21,5 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'rails-footnotes', '~> 4.0'
+  gem 'quiet_assets'
 end
