@@ -13,6 +13,7 @@ gem 'awesome_print'
 group :development, :test do
   gem 'byebug'
   gem 'rubocop'
+  gem 'brakeman', require: false
 end
 
 group :development do
