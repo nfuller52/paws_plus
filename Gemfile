@@ -23,4 +23,5 @@ group :development do
   gem 'rails-footnotes', '~> 4.0'
   gem 'quiet_assets'
   gem 'bullet'
+  gem 'mailcatcher'
 end
