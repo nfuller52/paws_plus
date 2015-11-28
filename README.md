@@ -14,5 +14,5 @@
 2. create the database, run the migrations and seed the db with sample data
 
   ```sh
-  $ bin/rake db:drop && bin/rake db:create && bin/rake db:migrate && bin/rake db:seed
+  $ bin/rake db:rebuild
   ```
