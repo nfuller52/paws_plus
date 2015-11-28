@@ -22,4 +22,5 @@ group :development do
   gem 'spring'
   gem 'rails-footnotes', '~> 4.0'
   gem 'quiet_assets'
+  gem 'bullet'
 end
