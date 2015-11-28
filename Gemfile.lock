@@ -188,6 +188,7 @@ GEM
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
     sqlite3 (1.3.11)
+    table_print (1.5.4)
     temple (0.7.6)
     terminal-table (1.5.2)
     thin (1.5.1)
@@ -230,6 +231,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
+  table_print
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
 
