@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require 'pathname'
+require 'benchmark'
 
 APP_ROOT = Pathname.new(File.expand_path('../', __FILE__))
 
@@ -27,10 +28,22 @@ def open_brakeman_report
   system("open #{brakeman_report}")
 end
 
+def print_completed_time(done_time)
+  done_time = done_time.round(2)
+  message = ["\n", "Done in ", "#{done_time} "]
+
+  message << (done_time < 60.0 ? "seconds." : "minutes.")
+
+  puts message.join
+end
+
 # rubocop:disable IfUnlessModifier
-if rspec_successful?
-  if rubocop_successful?
-    open_brakeman_report unless brakeman_successful?
+time = Benchmark.realtime do
+  if rspec_successful?
+    if rubocop_successful?
+      open_brakeman_report unless brakeman_successful?
+    end
   end
 end
 # rubocop:enable IfUnlessModifier
+print_completed_time(time)
