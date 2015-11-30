@@ -17,6 +17,7 @@ group :development, :test do
   gem 'brakeman', require: false
   gem 'factory_girl_rails'
   gem 'rspec-rails'
+  gem 'capybara'
 end
 
 group :development do
