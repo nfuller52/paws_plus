@@ -200,7 +200,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="893" y="621" name="visit_items">
+<table x="843" y="607" name="visit_items">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -215,11 +215,14 @@
 <row name="amount_in_cents" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
+<row name="quantity" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="1232" y="521" name="items">
+<table x="1232" y="575" name="items">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -240,7 +243,13 @@
 <row name="name" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
-<row name="suggested_retail_price_in_cent" null="1" autoincrement="0">
+<row name="dosage" null="1" autoincrement="0">
+<datatype>DECIMAL</datatype>
+<default>NULL</default></row>
+<row name="container_count" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="suggested_retail_price_in_cents" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
@@ -405,7 +414,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1055" y="814" name="order_items">
+<table x="1053" y="771" name="order_items">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -421,6 +430,12 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="items" row="id" />
 </row>
+<row name="amount_in_cents" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="quantity" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
@@ -452,18 +467,21 @@
 <part>id</part>
 </key>
 </table>
-<table x="1524" y="506" name="item_brands">
+<table x="1527" y="478" name="item_brands">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="name" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
+<row name="dosing_instructions" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="1451" y="374" name="item_categorization">
+<table x="1232" y="393" name="item_categorization">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -479,7 +497,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1492" y="280" name="item_categories">
+<table x="1478" y="335" name="item_categories">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -490,9 +508,12 @@
 <part>id</part>
 </key>
 </table>
-<table x="1523" y="626" name="manufacturers">
+<table x="1523" y="627" name="manufacturers">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
