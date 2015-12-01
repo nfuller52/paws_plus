@@ -89,7 +89,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1258" y="53" name="phones">
+<table x="124" y="272" name="phones">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -103,7 +103,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="882" y="48" name="vet_phones">
+<table x="360" y="159" name="vet_phones">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -146,7 +146,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="962" y="471" name="visits">
+<table x="586" y="609" name="visits">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -156,12 +156,24 @@
 </row>
 <row name="client_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<default>NULL</default><relation table="clients" row="id" />
+</row>
 <row name="pet_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
+<default>NULL</default><relation table="pets" row="id" />
+</row>
+<row name="sale_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="sales" row="id" />
+</row>
+<row name="scheduled_start_time" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
 <default>NULL</default></row>
-<row name="date" null="1" autoincrement="0">
-<datatype>DATE</datatype>
+<row name="time_arrived" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="time_departed" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
 <default>NULL</default></row>
 <row name="address" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
@@ -188,7 +200,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1218" y="460" name="visit_items">
+<table x="951" y="618" name="visit_items">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -207,9 +219,15 @@
 <part>id</part>
 </key>
 </table>
-<table x="1458" y="448" name="services">
+<table x="1267" y="569" name="services">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="code" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="name" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
@@ -237,6 +255,88 @@
 <default>NULL</default></row>
 <row name="is_confirmed" null="1" autoincrement="0">
 <datatype>bit</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="600" y="412" name="clients">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="893" y="444" name="pets">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="client_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="clients" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="346" y="372" name="client_phones">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="client_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="clients" row="id" />
+</row>
+<row name="phone_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="phones" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1041" y="43" name="vet_availabilities">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="vet_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="vets" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="309" y="569" name="sales">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="client_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="clients" row="id" />
+</row>
+<row name="type" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1051" y="442" name="vet_services">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="vet_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="vets" row="id" />
+</row>
+<row name="service_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="services" row="id" />
+</row>
+<row name="price_in_cents" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
