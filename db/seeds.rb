@@ -1,7 +1,28 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+puts "===> Seeding the Development Database <===\n=========================================="
+
+# controls
+#################################################
+vet_count = 10
+
+unless Vet.count >= vet_count
+  puts "-> BEGIN: creating #{vet_count} Vets"
+  vet_count.times do
+    Vet.create(
+      email: Faker::Internet.email,
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      address: Faker::Address.street_address,
+      address_2: [nil, Faker::Address.secondary_address].sample,
+      city: Faker::Address.city,
+      state: Faker::Address.state_abbr,
+      zip: Faker::Address.zip[0..4],
+      password: "password"
+    )
+  end
+  puts "-> DONE: creating #{vet_count} Vets"
+end
+
+# this should be the last line of the seed file! do not
+# output anything else to the console
+puts "\n===> Vet accounts available for login with the password 'password'"
+Vet.all.pluck(:email).each { |email| puts "-> #{email}" }

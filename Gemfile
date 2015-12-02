@@ -11,6 +11,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'awesome_print'
 gem 'table_print'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug'
@@ -19,6 +20,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'faker'
 end
 
 group :development do
