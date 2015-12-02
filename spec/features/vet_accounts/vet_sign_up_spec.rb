@@ -46,9 +46,8 @@ RSpec.feature 'Vet sign up', type: :feature do
     expect(page).to have_content("Zip can't be blank")
   end
 
-
   ## Support Methods
-  ##############################
+  ###############################################
 
   def vet_registers_with(fields)
     visit new_vet_registration_path
