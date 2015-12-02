@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :vets
-  get 'pages/index'
-
   # The root, the root, the root is on fire
   ##############################################
   root 'pages#index'
   ##############################################
+
+  devise_for :vets, controllers: {
+    registrations: 'vets/registrations'
+  }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

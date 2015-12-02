@@ -9,6 +9,7 @@ class DeviseCreateVets < ActiveRecord::Migration
       t.string :address_2, null: true
       t.string :city, null: false
       t.string :state, null: false
+      t.string :zip, null: false
       t.integer :distance_willing_to_travel, null: false, default: 0
       t.string :encrypted_password, null: false, default: ""
 
@@ -36,7 +37,6 @@ class DeviseCreateVets < ActiveRecord::Migration
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
-
 
       t.timestamps null: false
     end

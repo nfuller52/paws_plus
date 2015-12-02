@@ -16,14 +16,6 @@ ActiveRecord::Schema.define(version: 20151202054135) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "garbages", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "size"
-    t.integer  "stink"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "vets", force: :cascade do |t|
     t.string   "email",                      default: "", null: false
     t.string   "first_name",                              null: false
@@ -32,6 +24,7 @@ ActiveRecord::Schema.define(version: 20151202054135) do
     t.string   "address_2"
     t.string   "city",                                    null: false
     t.string   "state",                                   null: false
+    t.string   "zip",                                     null: false
     t.integer  "distance_willing_to_travel", default: 0,  null: false
     t.string   "encrypted_password",         default: "", null: false
     t.string   "reset_password_token"
