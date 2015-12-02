@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :vets
   get 'pages/index'
 
   # The root, the root, the root is on fire
