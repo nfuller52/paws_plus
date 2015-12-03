@@ -6,7 +6,6 @@ module Vets
 
     # GET /resource/sign_up
     # def new
-    #   @states = State.order(:name)
     #   super
     # end
 
