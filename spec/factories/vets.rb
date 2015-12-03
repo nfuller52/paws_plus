@@ -9,5 +9,6 @@ FactoryGirl.define do
     zip "02035"
     distance_willing_to_travel 10
     password "password"
+    confirmed_at DateTime.now
   end
 end
