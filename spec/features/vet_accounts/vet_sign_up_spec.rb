@@ -37,7 +37,7 @@ RSpec.feature 'Vet sign up', type: :feature do
   end
 
   scenario 'Vet omits their state' do
-    vet_registers_with(default_vet_fields.merge state: '')
+    vet_registers_with(default_vet_fields.merge state: 'Select a State')
     expect(page).to have_content("State can't be blank")
   end
 
@@ -64,7 +64,11 @@ RSpec.feature 'Vet sign up', type: :feature do
     fill_in 'Address', with: fields[:address]
     fill_in 'Address 2', with: fields[:address_2]
     fill_in 'City', with: fields[:city]
-    fill_in 'State', with: fields[:state]
+    # select(fields[:state], from: 'vet[state]') # THIS IS BROKEN
+    within '#vet_state' do
+      find("options[value='#{fields[:state]}']").click
+    end
+
     fill_in 'Zip', with: fields[:zip]
     fill_in 'Password', with: fields[:password]
     fill_in 'Password confirmation', with: fields[:password_confirmation]
