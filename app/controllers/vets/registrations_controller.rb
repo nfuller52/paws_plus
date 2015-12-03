@@ -1,13 +1,14 @@
 module Vets
   class RegistrationsController < Devise::RegistrationsController
     before_filter :configure_sign_up_params, only: [:create]
+    before_filter :load_states, only: [:new, :create]
     # before_filter :configure_account_update_params, only: [:update]
 
     # GET /resource/sign_up
-    def new
-      @states = State.order(:name)
-      super
-    end
+    # def new
+    #   @states = State.order(:name)
+    #   super
+    # end
 
     # POST /resource
     # def create
@@ -62,6 +63,10 @@ module Vets
 
     def extra_vet_params
       [:first_name, :last_name, :address, :city, :state, :zip, :distance_willing_to_travel]
+    end
+
+    def load_states
+      @states = State.order(:name)
     end
   end
 end

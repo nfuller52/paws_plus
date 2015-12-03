@@ -8,6 +8,8 @@
 </head>
 <body>
 
+<%= link_to 'Sign out', destroy_vet_session_path, method: :delete if vet_signed_in? %>
+
 <%= notice %>
 <%= alert %>
 
