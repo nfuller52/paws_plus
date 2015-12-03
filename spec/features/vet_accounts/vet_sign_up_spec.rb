@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'Vet sign up', type: :feature do
+  let!(:state) { State.create(abbreviation: 'MA', name: 'Massachusetts') }
+
   scenario 'Vet successfully creates a new account' do
     vet_registers_with(default_vet_fields)
     expect(page).to have_content('Welcome Doctor! You have signed up successfully.')
@@ -37,7 +39,7 @@ RSpec.feature 'Vet sign up', type: :feature do
   end
 
   scenario 'Vet omits their state' do
-    vet_registers_with(default_vet_fields.merge state: '')
+    vet_registers_with(default_vet_fields.merge state: 'Select a State')
     expect(page).to have_content("State can't be blank")
   end
 
@@ -64,7 +66,7 @@ RSpec.feature 'Vet sign up', type: :feature do
     fill_in 'Address', with: fields[:address]
     fill_in 'Address 2', with: fields[:address_2]
     fill_in 'City', with: fields[:city]
-    fill_in 'State', with: fields[:state]
+    select fields[:state], from: 'State'
     fill_in 'Zip', with: fields[:zip]
     fill_in 'Password', with: fields[:password]
     fill_in 'Password confirmation', with: fields[:password_confirmation]
@@ -78,7 +80,7 @@ RSpec.feature 'Vet sign up', type: :feature do
       address: '1 Patriot Pl',
       address_2: nil,
       city: 'Foxborough',
-      state: 'MA',
+      state: 'Massachusetts',
       zip: '02035',
       password: 'password',
       password_confirmation: 'password' }
