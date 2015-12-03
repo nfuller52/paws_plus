@@ -1,13 +1,12 @@
 class Vet < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
          :registerable,
          :rememberable,
          :confirmable,
          :recoverable,
          :validatable,
-         :trackable
+         :trackable,
+         :lockable
 
   validates :first_name, presence: true
   validates :last_name, presence: true

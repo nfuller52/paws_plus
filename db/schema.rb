@@ -48,6 +48,9 @@ ActiveRecord::Schema.define(version: 20151202161813) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.integer  "failed_attempts",            default: 0,  null: false
+    t.string   "unlock_token"
+    t.datetime "locked_at"
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
   end
@@ -55,5 +58,6 @@ ActiveRecord::Schema.define(version: 20151202161813) do
   add_index "vets", ["confirmation_token"], name: "index_vets_on_confirmation_token", unique: true, using: :btree
   add_index "vets", ["email"], name: "index_vets_on_email", unique: true, using: :btree
   add_index "vets", ["reset_password_token"], name: "index_vets_on_reset_password_token", unique: true, using: :btree
+  add_index "vets", ["unlock_token"], name: "index_vets_on_unlock_token", unique: true, using: :btree
 
 end
