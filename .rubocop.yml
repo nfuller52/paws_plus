@@ -2,7 +2,7 @@ inherit_from: .rubocop_todo.yml
 AllCops:
   Include:
     - '**/Rakefile'
-    - 'config.ru'
+    - '**/config.ru'
   Exclude:
     - 'db/schema.rb'
     - 'db/migrate/*'
