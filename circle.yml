@@ -1,4 +1,4 @@
 test:
   post:
-    - bundle exec rubocop
+    - bundle exec rubocop ./
     - brakeman --rails4
