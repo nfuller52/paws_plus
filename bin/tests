@@ -17,7 +17,7 @@ def rubocop_successful?
 end
 
 def brakeman_successful?
-  system("brakeman -o brakeman.html -q -z")
+  system("brakeman -o brakeman.html --rails4 -q -z")
 end
 
 def brakeman_report
