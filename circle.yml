@@ -1,3 +1,2 @@
 test:
   post:
-    - brakeman --rails4
