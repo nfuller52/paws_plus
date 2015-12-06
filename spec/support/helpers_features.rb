@@ -1,4 +1,4 @@
-def sign_in(email_address, password)
+def log_in(email_address, password)
   fill_in 'Email', with: email_address
   fill_in 'Password', with: password
   click_button 'Log in'
@@ -8,5 +8,5 @@ end
 
 def sign_in_as_vet(email_address, password)
   visit new_vet_session_path
-  sign_in(email_address, password)
+  log_in(email_address, password)
 end

@@ -8,6 +8,18 @@ RSpec.feature 'Vet sign up', type: :feature do
     password = default_vet_fields[:password]
 
     vet_registers_with(default_vet_fields)
+
+    vet = Vet.order(created_at: :desc).limit(1).first
+
+    expect(vet.email).to eq('tbrady@patriots.com')
+    expect(vet.first_name).to eq('Tom')
+    expect(vet.last_name).to eq('Brady')
+    expect(vet.address).to eq('1 Patriot Pl')
+    expect(vet.address_2).to eq('Apt 44')
+    expect(vet.city).to eq('Foxborough')
+    expect(vet.state).to eq('MA')
+    expect(vet.zip).to eq('02035')
+
     vet_should_confirm_email(email)
     sign_in_as_vet(email, password)
   end
@@ -96,7 +108,7 @@ RSpec.feature 'Vet sign up', type: :feature do
       first_name: 'Tom',
       last_name: 'Brady',
       address: '1 Patriot Pl',
-      address_2: nil,
+      address_2: 'Apt 44',
       city: 'Foxborough',
       state: 'Massachusetts',
       zip: '02035',
