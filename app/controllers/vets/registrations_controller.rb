@@ -1,8 +1,8 @@
 module Vets
   class RegistrationsController < Devise::RegistrationsController
     before_filter :configure_sign_up_params, only: [:create]
-    before_filter :load_states, only: [:new, :create]
-    # before_filter :configure_account_update_params, only: [:update]
+    before_filter :load_states, only: [:new, :create, :edit, :update]
+    before_filter :configure_account_update_params, only: [:update]
 
     # GET /resource/sign_up
     # def new
@@ -25,9 +25,10 @@ module Vets
     # end
 
     # DELETE /resource
-    # def destroy
-    #   super
-    # end
+    def destroy
+      logger.warn "WARNING: Attempt to destroy Vet object"
+      not_found!
+    end
 
     # GET /resource/cancel
     # Forces the session data which is usually expired after sign
@@ -46,9 +47,9 @@ module Vets
     end
 
     # If you have extra params to permit, append them to the sanitizer.
-    # def configure_account_update_params
-    #   devise_parameter_sanitizer.for(:account_update) << :attribute
-    # end
+    def configure_account_update_params
+      devise_parameter_sanitizer.for(:account_update) << extra_vet_params
+    end
 
     # The path used after sign up.
     # def after_sign_up_path_for(resource)
@@ -61,7 +62,7 @@ module Vets
     # end
 
     def extra_vet_params
-      [:first_name, :last_name, :address, :city, :state, :zip, :distance_willing_to_travel]
+      [:first_name, :last_name, :address, :address_2, :city, :state, :zip, :distance_willing_to_travel]
     end
 
     def load_states
