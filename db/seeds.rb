@@ -4,6 +4,22 @@ puts "===> Seeding the Development Database <===\n==============================
 #################################################
 vet_count = 10
 
+# local user accounts
+#################################################
+Vet.where(email: 'vet@qa.com').first_or_create(
+  email: 'vet@qa.com',
+  password: 'password',
+  first_name: 'Arnold',
+  last_name: 'McTester',
+  address: '187 Test Ln.',
+  city: 'San Francisco',
+  state: 'CA',
+  zip: '94101',
+  confirmed_at: DateTime.current
+)
+
+# vets
+#################################################
 unless Vet.count >= vet_count
   puts "-> BEGIN: creating #{vet_count} Vets"
   vet_count.times do
@@ -25,5 +41,4 @@ end
 
 # this should be the last line of the seed file! do not
 # output anything else to the console
-puts "\n===> Vet accounts available for login with the password 'password'"
-Vet.all.pluck(:email).each { |email| puts "-> #{email}" }
+puts "\n===> Vet account: 'vet@qa.com', password: 'password'"
