@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     registrations: 'vets/registrations'
   }
 
+  resources :phones, expect: [:index]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
