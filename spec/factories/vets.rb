@@ -10,5 +10,6 @@ FactoryGirl.define do
     distance_willing_to_travel 10
     password "password"
     confirmed_at DateTime.now
+    phone '8004277973'
   end
 end

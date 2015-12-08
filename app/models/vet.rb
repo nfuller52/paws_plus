@@ -14,4 +14,9 @@ class Vet < ActiveRecord::Base
   validates :city, presence: true
   validates :state, presence: true, length: { is: 2 }
   validates :zip, presence: true, length: { is: 5 }
+  validates :phone, presence: true, length: { is: 10 }
+
+  def phone=(value)
+    write_attribute(:phone, value.to_s.gsub(/\D/, ''))
+  end
 end
