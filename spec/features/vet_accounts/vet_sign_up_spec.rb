@@ -19,6 +19,7 @@ RSpec.feature 'Vet sign up', type: :feature do
     expect(vet.city).to eq('Foxborough')
     expect(vet.state).to eq('MA')
     expect(vet.zip).to eq('02035')
+    expect(vet.phone).to eq('8004277973')
 
     vet_should_confirm_email(email)
     sign_in_as_vet(email, password)
@@ -74,7 +75,9 @@ RSpec.feature 'Vet sign up', type: :feature do
   def vet_registers_with(fields)
     visit new_vet_registration_path
 
-    fill_in_vet_registration_form_with(fields)
+    fill_in_vet_contact_with(fields)
+    fill_in_vet_address_info_with(fields)
+    fill_in_vet_password_and_confirmation_with(fields)
     click_button 'Sign up'
   end
 
@@ -88,9 +91,7 @@ RSpec.feature 'Vet sign up', type: :feature do
     expect(page).to have_content('Your email address has been successfully confirmed.')
   end
 
-  # rubocop:disable AbcSize
-  def fill_in_vet_registration_form_with(fields)
-    fill_in 'Email', with: fields[:email]
+  def fill_in_vet_address_info_with(fields)
     fill_in 'First name', with: fields[:first_name]
     fill_in 'Last name', with: fields[:last_name]
     fill_in 'Address', with: fields[:address]
@@ -98,13 +99,22 @@ RSpec.feature 'Vet sign up', type: :feature do
     fill_in 'City', with: fields[:city]
     select fields[:state], from: 'State'
     fill_in 'Zip', with: fields[:zip]
+  end
+
+  def fill_in_vet_contact_with(fields)
+    fill_in 'Email', with: fields[:email]
+    fill_in 'Phone', with: fields[:phone]
+  end
+
+  def fill_in_vet_password_and_confirmation_with(fields)
     fill_in 'Password', with: fields[:password]
     fill_in 'Password confirmation', with: fields[:password_confirmation]
   end
-  # rubocop:enable AbcSize
 
+  # rubocop:disable Metrics/MethodLength
   def default_vet_fields
-    { email: 'tbrady@patriots.com',
+    {
+      email: 'tbrady@patriots.com',
       first_name: 'Tom',
       last_name: 'Brady',
       address: '1 Patriot Pl',
@@ -112,7 +122,10 @@ RSpec.feature 'Vet sign up', type: :feature do
       city: 'Foxborough',
       state: 'Massachusetts',
       zip: '02035',
+      phone: '8004277973',
       password: 'password',
-      password_confirmation: 'password' }
+      password_confirmation: 'password'
+    }
   end
+  # rubocop:enable Metrics/MethodLength
 end

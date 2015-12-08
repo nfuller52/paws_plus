@@ -62,7 +62,7 @@ module Vets
     # end
 
     def extra_vet_params
-      [:first_name, :last_name, :address, :address_2, :city, :state, :zip, :distance_willing_to_travel]
+      [:first_name, :last_name, :address, :address_2, :city, :state, :zip, :phone, :distance_willing_to_travel]
     end
 
     def load_states

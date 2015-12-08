@@ -32,6 +32,7 @@ unless Vet.count >= vet_count
       city: Faker::Address.city,
       state: Faker::Address.state_abbr,
       zip: Faker::Address.zip[0..4],
+      phone: Faker::PhoneNumber.phone_number,
       confirmed_at: DateTime.current,
       password: "password"
     )
